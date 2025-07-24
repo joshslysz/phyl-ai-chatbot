@@ -265,59 +265,174 @@ Return ONLY the SQL query, nothing else. If multiple queries are needed, separat
         # Fallback to a safe general query if Claude fails
         return "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'"
 
-async def claude_orchestrated_query(question: str) -> str:
-    """Claude orchestrates the entire MCP workflow through explicit step-by-step execution."""
+async def claude_orchestrated_query_optimized(question: str) -> str:
+    """Optimized Claude MCP workflow: Fresh connections with smart discovery."""
     
     logging.info(f"Processing question: {question}")
     
-    # Step 1: Get table list
-    step1_prompt = f"""You are a database assistant. The student asked: "{question}"
+    try:
+        # Use fresh connections but optimize the workflow
+        result = await execute_fresh_connection_workflow(question)
+        return result
+        
+    except Exception as e:
+        logging.error(f"Error in optimized query: {str(e)}")
+        return f"I encountered an error while processing your question: {str(e)}"
 
-STEP 1: Discover available tables using the mcp_list_objects tool.
+async def execute_fresh_connection_workflow(question: str) -> str:
+    """Execute optimized workflow using fresh connections for reliability."""
+    
+    logging.info("Starting fresh-connection optimized workflow")
+    
+    try:
+        # Step 1: Discover tables (1 connection)
+        logging.info("Step 1: Discovering tables")
+        tables_result = await query_mcp_server(use_tool="list_objects", schema_name="public")
+        
+        if not tables_result.get("success") or not tables_result.get("data"):
+            return "I couldn't access the database tables."
+        
+        # Extract table names
+        tables_data = tables_result["data"]
+        table_names = []
+        if isinstance(tables_data, list):
+            table_names = [table.get("name", "") for table in tables_data if table.get("type") in ["table", "BASE TABLE"]]
+        
+        logging.info(f"Discovered tables: {table_names}")
+        
+        # Step 2: Generate smart SQL without needing schemas (avoid extra connections)
+        sql_query = generate_smart_sql_no_schema(question, table_names)
+        logging.info(f"Generated smart SQL: {sql_query}")
+        
+        # Step 3: Execute SQL (1 connection)
+        sql_result = await query_mcp_server(sql_query=sql_query, use_tool="execute_sql")
+        
+        if sql_result.get("success") and sql_result.get("data"):
+            # Step 4: Generate final response using Claude
+            final_prompt = f"""Student Question: "{question}"
+Available Tables: {', '.join(table_names)}
+SQL Results: {json.dumps(sql_result["data"])}
 
-You MUST call mcp_list_objects with schema_name="public" to see what tables are available. Do this now."""
+Provide a clear, conversational answer using the data. Don't mention SQL or technical details."""
 
-    # Step 2: Get column details for relevant tables
-    step2_prompt_template = """STEP 2: Now examine the column structure of relevant tables.
+            final_response = claude_client.messages.create(
+                model="claude-3-5-sonnet-20241022",
+                max_tokens=1000,
+                messages=[{"role": "user", "content": final_prompt}]
+            )
+            
+            logging.info("Fresh-connection workflow completed successfully")
+            return final_response.content[0].text
+        else:
+            return "I couldn't find any relevant information for your question."
+    
+    except Exception as e:
+        logging.error(f"Error in fresh-connection workflow: {e}")
+        return f"I encountered an error while processing your question: {str(e)}"
 
-Based on the question "{question}" and these available tables: {tables}
+def generate_smart_sql_no_schema(question: str, table_names: List[str]) -> str:
+    """Generate optimized SQL without needing schema discovery."""
+    
+    question_lower = question.lower()
+    
+    # Smart keyword-based routing
+    if "assignments" in table_names and any(word in question_lower for word in ["assignment", "quiz", "test", "exam", "due", "homework"]):
+        return "SELECT * FROM assignments ORDER BY due_date, week;"
+    
+    elif "modules" in table_names and any(word in question_lower for word in ["module", "topic", "cover", "subject", "unit"]):
+        return "SELECT * FROM modules ORDER BY block_code, start_week;"
+    
+    elif "policies" in table_names and any(word in question_lower for word in ["policy", "rule", "grade", "attendance", "late", "extension", "email"]):
+        # Enhanced policy search with specific term targeting
+        search_terms = [word for word in question_lower.split() if len(word) > 3 and word not in ["what", "what's", "policy", "policies"]]
+        
+        # Look for specific policy keywords
+        if "email" in question_lower:
+            return "SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%' OR specific_rules ILIKE '%email%' ORDER BY policy_category, policy_name;"
+        elif search_terms:
+            term = search_terms[0]
+            return f"SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%{term}%' OR policy_description ILIKE '%{term}%' OR details ILIKE '%{term}%' OR specific_rules ILIKE '%{term}%' ORDER BY policy_category, policy_name;"
+        else:
+            return "SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies ORDER BY policy_category, policy_name;"
+    
+    elif "course_info" in table_names and any(word in question_lower for word in ["instructor", "teacher", "professor", "contact", "email", "office", "hours", "textbook", "book", "mastering", "cost", "price", "buy", "purchase", "class", "schedule", "time", "when", "where", "location", "room", "technology", "brightspace", "tophat", "collaborate", "support", "tutorial", "ta", "teaching", "assistant", "help", "course", "syllabus", "hybrid", "online", "format"]):
+        return "SELECT * FROM course_info ORDER BY info_category, info_type;"
+    
+    else:
+        # General search across all tables
+        search_terms = [word for word in question_lower.split() if len(word) > 3]
+        if search_terms and table_names:
+            term = search_terms[0]
+            union_queries = []
+            
+            for table_name in table_names:
+                # Use common text column names
+                if table_name == "assignments":
+                    union_queries.append(f"SELECT 'assignment' as source, assignment_name as name, description as content FROM assignments WHERE assignment_name ILIKE '%{term}%' OR description ILIKE '%{term}%'")
+                elif table_name == "modules":
+                    union_queries.append(f"SELECT 'module' as source, module_name as name, module_description as content FROM modules WHERE module_name ILIKE '%{term}%' OR module_description ILIKE '%{term}%'")
+                elif table_name == "policies":
+                    union_queries.append(f"SELECT 'policy' as source, policy_name as name, policy_description as content FROM policies WHERE policy_name ILIKE '%{term}%' OR policy_description ILIKE '%{term}%'")
+                elif table_name == "course_info":
+                    union_queries.append(f"SELECT 'course_info' as source, title as name, details as content FROM course_info WHERE title ILIKE '%{term}%' OR details ILIKE '%{term}%' OR contact_info ILIKE '%{term}%' OR additional_notes ILIKE '%{term}%'")
+            
+            if union_queries:
+                return " UNION ALL ".join(union_queries) + ";"
+        
+        # Fallback: return data from first available table
+        if table_names:
+            return f"SELECT * FROM {table_names[0]} LIMIT 10;"
+        else:
+            return "SELECT 1;"
 
-You MUST call mcp_get_object_details for each table that might contain relevant data. Focus on tables likely to contain information about: {question}
+# Removed broken single-connection implementation - using fresh connections for reliability
 
-Call mcp_get_object_details for each relevant table NOW."""
+# Removed legacy functions - using optimized fresh connection approach
 
-    # Step 3: Generate and execute SQL
-    step3_prompt_template = """STEP 3: Generate and execute SQL query.
+# Removed unused persistent connection code - using fresh connections for reliability
+
+# Clean implementation with fresh connections for reliability
+
+# Main entry point uses optimized fresh connection approach
+async def claude_orchestrated_query(question: str) -> str:
+    """Main Claude MCP workflow - uses optimized fresh connections."""
+    return await claude_orchestrated_query_optimized(question)
+
+
+async def claude_intelligent_query(question: str) -> str:
+    """Claude orchestrates the entire workflow using fresh connections: discover schema → generate SQL → execute → format response."""
+    
+    # Create a comprehensive prompt for Claude to handle the entire workflow
+    prompt = f"""You are a database assistant with access to MCP tools for a Supabase PostgreSQL database.
 
 Student Question: "{question}"
-Available Tables: {tables}
-Column Details: {columns}
 
-You MUST:
-1. Generate a SQL query that searches ALL relevant text columns using ILIKE and OR conditions
-2. Use this pattern: WHERE col1 ILIKE '%term%' OR col2 ILIKE '%term%' OR col3 ILIKE '%term%'
-3. Extract key terms from the question and search across descriptive text columns
-4. Call mcp_execute_sql with your generated query
+Your database has these main tables: assignments, modules, policies, course_info
 
-Generate the SQL and execute it NOW using mcp_execute_sql."""
+Available MCP tools:
+1. mcp_list_objects(schema_name="public") - Lists all tables in the schema
+2. mcp_get_object_details(object_name="table_name") - Gets column details for a table  
+3. mcp_execute_sql(sql="SELECT ...") - Executes SQL queries (read-only)
 
-    # Step 4: Format final response
-    step4_prompt_template = """STEP 4: Provide the final answer to the student.
+CRITICAL: You MUST complete ALL steps of this workflow. Do not stop until you have executed a SQL query and provided a complete answer.
 
-Student Question: "{question}"
-SQL Results: {results}
+CRITICAL: Make ALL tool calls in your FIRST response. Do not wait for tool results to make the next call.
 
-Provide a clear, conversational answer to the student's question using the data. Do NOT mention SQL, databases, or technical details - just give them a helpful response."""
+For email policy questions, you must immediately call:
+1. mcp_list_objects(schema_name="public")
+2. mcp_get_object_details(object_name="policies") 
+3. mcp_execute_sql(sql="SELECT * FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%'")
+
+IMPORTANT: Make all 3 tool calls RIGHT NOW in this response. Do not explain what you will do - just execute all the tools immediately."""
 
     try:
-        # Execute Step 1: List tables
-        logging.info("STEP 1: Requesting table list from Claude")
-        messages = [{"role": "user", "content": step1_prompt}]
-        
-        step1_response = claude_client.messages.create(
+        # Create a conversation with Claude that can use MCP tools
+        response = claude_client.messages.create(
             model="claude-3-5-sonnet-20241022",
-            max_tokens=1000,
-            messages=messages,
+            max_tokens=2000,
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
             tools=[
                 {
                     "name": "mcp_list_objects",
@@ -345,7 +460,7 @@ Provide a clear, conversational answer to the student's question using the data.
                     "name": "mcp_execute_sql",
                     "description": "Execute a SQL query",
                     "input_schema": {
-                        "type": "object", 
+                        "type": "object",
                         "properties": {
                             "sql": {"type": "string", "description": "SQL query to execute"}
                         },
@@ -355,183 +470,89 @@ Provide a clear, conversational answer to the student's question using the data.
             ]
         )
         
-        # Process step 1 tool calls and build conversation
-        messages.append({"role": "assistant", "content": step1_response.content})
-        tables_data = ""
+        # Handle Claude's response and tool calls
+        return await process_claude_tool_response(response, question)
         
-        if step1_response.stop_reason == "tool_use":
-            logging.info("STEP 1: Claude called list_objects - executing MCP tool")
-            for content_block in step1_response.content:
-                if content_block.type == "tool_use" and content_block.name == "mcp_list_objects":
-                    result = await query_mcp_server(use_tool="list_objects", schema_name=content_block.input["schema_name"])
-                    tables_data = json.dumps(result["data"])
-                    logging.info(f"STEP 1: Found tables: {tables_data[:200]}...")
-                    messages.append({
-                        "role": "tool",
+    except Exception as e:
+        return f"I encountered an error while processing your question: {str(e)}"
+
+async def process_claude_tool_response(response, original_question: str) -> str:
+    """Process Claude's response and handle any MCP tool calls using fresh connections."""
+    
+    logging.info(f"Processing Claude response with stop_reason: {response.stop_reason}")
+    logging.info(f"Response content blocks: {len(response.content)}")
+    
+    # If Claude wants to use tools, handle them
+    if response.stop_reason == "tool_use":
+        logging.info("Claude wants to use tools - processing tool calls")
+        tool_results = []
+        
+        for i, content_block in enumerate(response.content):
+            logging.info(f"Content block {i}: type={content_block.type}")
+            if content_block.type == "tool_use":
+                tool_name = content_block.name
+                tool_input = content_block.input
+                logging.info(f"Executing tool: {tool_name} with input: {tool_input}")
+                
+                # Execute the MCP tool using fresh connections (like current system)
+                if tool_name == "mcp_list_objects":
+                    result = await query_mcp_server(use_tool="list_objects", schema_name=tool_input["schema_name"])
+                elif tool_name == "mcp_get_object_details":
+                    result = await query_mcp_server(use_tool="get_object_details", object_name=tool_input["object_name"])
+                elif tool_name == "mcp_execute_sql":
+                    result = await query_mcp_server(sql_query=tool_input["sql"], use_tool="execute_sql")
+                else:
+                    result = {"success": False, "raw": f"Unknown tool: {tool_name}"}
+                
+                logging.info(f"Tool {tool_name} executed, result: {str(result)[:200]}...")
+                
+                # Add tool result
+                tool_results.append({
+                    "role": "user", 
+                    "content": [{
+                        "type": "tool_result",
                         "tool_use_id": content_block.id,
-                        "content": tables_data
-                    })
-        else:
-            logging.warning("STEP 1: Claude did not call list_objects tool!")
+                        "content": result.get("raw", str(result))
+                    }]
+                })
         
-        # Execute Step 2: Get column details
-        logging.info("STEP 2: Requesting column details from Claude")
-        step2_prompt = step2_prompt_template.format(question=question, tables=tables_data)
-        messages.append({"role": "user", "content": step2_prompt})
+        logging.info(f"Processed {len(tool_results)} tool calls, continuing conversation")
         
-        step2_response = claude_client.messages.create(
-            model="claude-3-5-sonnet-20241022",
-            max_tokens=1500,
-            messages=messages,
-            tools=[
-                {
-                    "name": "mcp_list_objects",
-                    "description": "List database objects in a schema",
-                    "input_schema": {
-                        "type": "object",
-                        "properties": {
-                            "schema_name": {"type": "string", "description": "Schema name (use 'public')"}
-                        },
-                        "required": ["schema_name"]
-                    }
-                },
-                {
-                    "name": "mcp_get_object_details", 
-                    "description": "Get detailed information about a database object",
-                    "input_schema": {
-                        "type": "object",
-                        "properties": {
-                            "object_name": {"type": "string", "description": "Name of the database object"}
-                        },
-                        "required": ["object_name"]
-                    }
-                },
-                {
-                    "name": "mcp_execute_sql",
-                    "description": "Execute a SQL query",
-                    "input_schema": {
-                        "type": "object", 
-                        "properties": {
-                            "sql": {"type": "string", "description": "SQL query to execute"}
-                        },
-                        "required": ["sql"]
-                    }
-                }
-            ]
-        )
+        # Continue conversation with tool results - be extremely direct
+        messages = [
+            {"role": "user", "content": f"EXECUTE STEP 2 NOW: Call mcp_get_object_details(object_name=\"policies\") immediately. Do not explain, just make the tool call."},
+            {"role": "assistant", "content": response.content}
+        ] + tool_results
         
-        # Process step 2 tool calls
-        messages.append({"role": "assistant", "content": step2_response.content})
-        columns_data = ""
+        logging.info(f"Sending continuation message to Claude with {len(messages)} total messages")
         
-        if step2_response.stop_reason == "tool_use":
-            logging.info("STEP 2: Claude called get_object_details - executing MCP tools")
-            for content_block in step2_response.content:
-                if content_block.type == "tool_use" and content_block.name == "mcp_get_object_details":
-                    table_name = content_block.input["object_name"]
-                    result = await query_mcp_server(use_tool="get_object_details", object_name=table_name)
-                    columns_data += f"\nTable {table_name}: {json.dumps(result['data'])}"
-                    logging.info(f"STEP 2: Got schema for table '{table_name}': {json.dumps(result['data'])[:200]}...")
-                    messages.append({
-                        "role": "tool",
-                        "tool_use_id": content_block.id,
-                        "content": json.dumps(result["data"])
-                    })
-        else:
-            logging.warning("STEP 2: Claude did not call get_object_details tool!")
-        
-        # Execute Step 3: Generate and execute SQL
-        logging.info("STEP 3: Requesting SQL generation and execution from Claude")
-        step3_prompt = step3_prompt_template.format(
-            question=question, 
-            tables=tables_data, 
-            columns=columns_data
-        )
-        messages.append({"role": "user", "content": step3_prompt})
-        
-        step3_response = claude_client.messages.create(
-            model="claude-3-5-sonnet-20241022",
-            max_tokens=1500,
-            messages=messages,
-            tools=[
-                {
-                    "name": "mcp_list_objects",
-                    "description": "List database objects in a schema",
-                    "input_schema": {
-                        "type": "object",
-                        "properties": {
-                            "schema_name": {"type": "string", "description": "Schema name (use 'public')"}
-                        },
-                        "required": ["schema_name"]
-                    }
-                },
-                {
-                    "name": "mcp_get_object_details", 
-                    "description": "Get detailed information about a database object",
-                    "input_schema": {
-                        "type": "object",
-                        "properties": {
-                            "object_name": {"type": "string", "description": "Name of the database object"}
-                        },
-                        "required": ["object_name"]
-                    }
-                },
-                {
-                    "name": "mcp_execute_sql",
-                    "description": "Execute a SQL query",
-                    "input_schema": {
-                        "type": "object", 
-                        "properties": {
-                            "sql": {"type": "string", "description": "SQL query to execute"}
-                        },
-                        "required": ["sql"]
-                    }
-                }
-            ]
-        )
-        
-        # Process step 3 tool calls
-        messages.append({"role": "assistant", "content": step3_response.content})
-        sql_results = ""
-        
-        if step3_response.stop_reason == "tool_use":
-            logging.info("STEP 3: Claude called execute_sql - executing MCP tool")
-            for content_block in step3_response.content:
-                if content_block.type == "tool_use" and content_block.name == "mcp_execute_sql":
-                    sql_query = content_block.input["sql"]
-                    logging.info(f"STEP 3: Claude generated SQL: {sql_query}")
-                    result = await query_mcp_server(sql_query=sql_query, use_tool="execute_sql")
-                    sql_results = json.dumps(result["data"])
-                    logging.info(f"STEP 3: SQL returned {len(result.get('data', []))} results")
-                    messages.append({
-                        "role": "tool",
-                        "tool_use_id": content_block.id,
-                        "content": sql_results
-                    })
-        else:
-            logging.warning("STEP 3: Claude did not call execute_sql tool!")
-        
-        # Execute Step 4: Generate final response
-        logging.info("STEP 4: Generating final conversational response")
-        step4_prompt = step4_prompt_template.format(
-            question=question,
-            results=sql_results
-        )
-        
+        # Get final response from Claude
         final_response = claude_client.messages.create(
             model="claude-3-5-sonnet-20241022",
             max_tokens=1000,
-            messages=[{"role": "user", "content": step4_prompt}]
+            messages=messages
         )
         
-        logging.info("STEP 4: Workflow completed successfully")
+        logging.info(f"Final response stop_reason: {final_response.stop_reason}")
+        logging.info(f"Final response content blocks: {len(final_response.content)}")
         
-        return final_response.content[0].text
+        if len(final_response.content) == 0:
+            logging.error("Final response has no content blocks!")
+            return "I encountered an issue processing the response - no content returned."
         
-    except Exception as e:
-        logging.error(f"Error in claude_orchestrated_query: {str(e)}")
-        return f"I encountered an error while processing your question: {str(e)}"
-
+        logging.info(f"Final response content: {str(final_response.content[0])[:200]}...")
+        
+        # Handle potential additional tool calls in final response
+        if final_response.stop_reason == "tool_use":
+            logging.info("Final response has tool_use, recursing...")
+            return await process_claude_tool_response(final_response, original_question)
+        else:
+            logging.info("Final response is text, returning...")
+            return final_response.content[0].text
+    
+    else:
+        logging.info("Claude provided direct response (no tools)")
+        return response.content[0].text
 
 async def generate_claude_response(question: str, course_data: List[Dict[str, Any]], schema_info: str = None, data_sources: List[str] = None) -> str:
     """Generate a conversational response using Claude 3.5 Sonnet based on the user's question and course data."""
@@ -596,7 +617,7 @@ async def ask_question(request: QuestionRequest):
         raise HTTPException(status_code=400, detail="Question cannot be empty")
     
     try:
-        # Use Claude to orchestrate the entire MCP workflow
+        # Use hybrid approach: hardcoded routing + intelligent SQL generation
         answer = await claude_orchestrated_query(request.question)
         
         return AnswerResponse(

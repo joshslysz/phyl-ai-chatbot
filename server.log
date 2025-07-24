@@ -1,0 +1,573 @@
+INFO:     Will watch for changes in these directories: ['/home/joshslysz/projects/phyl-chatbot/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [3088] using StatReload
+INFO:     Started server process [3095]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-07-24 12:11:31,825 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:11:31,831 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:11:33] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+[07/24/25 12:11:34] INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:11:34,310 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:11:34,310 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:11:35,608 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+Starting MCP server...
+Starting MCP server...
+Command: /home/joshslysz/projects/phyl-chatbot/backend/phyl-chatbot/bin/postgres-mcp --access-mode restricted --transport stdio [DATABASE_URI]
+✅ MCP server started successfully
+✅ MCP server started successfully
+INFO:     127.0.0.1:46402 - "POST /ask HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3095]
+INFO:     Started server process [3147]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-07-24 12:13:52,290 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:13:52,310 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:13:53] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:13:54] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:13:54,726 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:13:54,726 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:13:56,536 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+Starting MCP server...
+Starting MCP server...
+Command: /home/joshslysz/projects/phyl-chatbot/backend/phyl-chatbot/bin/postgres-mcp --access-mode restricted --transport stdio [DATABASE_URI]
+✅ MCP server started successfully
+✅ MCP server started successfully
+INFO:     127.0.0.1:45540 - "POST /ask HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3147]
+INFO:     Started server process [3233]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-07-24 12:14:24,286 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:14:24,293 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:14:25] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:14:26] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:14:26,674 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:14:26,674 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:14:29,239 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+Starting MCP server...
+Starting MCP server...
+Command: /home/joshslysz/projects/phyl-chatbot/backend/phyl-chatbot/bin/postgres-mcp --access-mode restricted --transport stdio [DATABASE_URI]
+✅ MCP server started successfully
+✅ MCP server started successfully
+INFO:     127.0.0.1:32802 - "POST /ask HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3233]
+INFO:     Started server process [3247]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-07-24 12:14:52,948 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:14:52,955 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:14:54] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+[07/24/25 12:14:55] INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:14:55,249 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:14:55,249 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:14:57,091 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+Starting MCP server...
+Starting MCP server...
+Command: /home/joshslysz/projects/phyl-chatbot/backend/phyl-chatbot/bin/postgres-mcp --access-mode restricted --transport stdio [DATABASE_URI]
+✅ MCP server started successfully
+✅ MCP server started successfully
+INFO:     127.0.0.1:36096 - "POST /ask HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3247]
+INFO:     Started server process [3287]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3287]
+INFO:     Started server process [3293]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-07-24 12:16:48,888 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:16:48,908 - root - INFO - Processing Claude response with stop_reason: tool_use
+2025-07-24 12:16:48,908 - root - INFO - Response content blocks: 2
+2025-07-24 12:16:48,908 - root - INFO - Claude wants to use tools - processing tool calls
+2025-07-24 12:16:48,908 - root - INFO - Content block 0: type=text
+2025-07-24 12:16:48,908 - root - INFO - Content block 1: type=tool_use
+2025-07-24 12:16:48,908 - root - INFO - Executing tool: mcp_list_objects with input: {'schema_name': 'public'}
+2025-07-24 12:16:48,908 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:16:50] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+[07/24/25 12:16:51] INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:16:51,198 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:16:51,199 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:16:51,426 - root - INFO - Tool mcp_list_objects executed, result: {'success': True, 'data': [{'schema': 'public', 'name': 'assignments', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'course_info', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'modules',...
+2025-07-24 12:16:51,426 - root - INFO - Processed 1 tool calls, continuing conversation
+2025-07-24 12:16:51,426 - root - INFO - Sending continuation message to Claude with 3 total messages
+2025-07-24 12:16:52,477 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:16:52,479 - root - INFO - Final response stop_reason: end_turn
+2025-07-24 12:16:52,479 - root - INFO - Final response content: TextBlock(citations=None, text="STEP 2: Now let's get details about the policies table\n\n", type='text')...
+2025-07-24 12:16:52,479 - root - INFO - Final response is text, returning...
+Starting MCP server...
+Starting MCP server...
+Command: /home/joshslysz/projects/phyl-chatbot/backend/phyl-chatbot/bin/postgres-mcp --access-mode restricted --transport stdio [DATABASE_URI]
+✅ MCP server started successfully
+✅ MCP server started successfully
+INFO:     127.0.0.1:34184 - "POST /ask HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3293]
+INFO:     Started server process [3357]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-07-24 12:17:21,339 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:17:21,346 - root - INFO - Processing Claude response with stop_reason: tool_use
+2025-07-24 12:17:21,346 - root - INFO - Response content blocks: 2
+2025-07-24 12:17:21,346 - root - INFO - Claude wants to use tools - processing tool calls
+2025-07-24 12:17:21,346 - root - INFO - Content block 0: type=text
+2025-07-24 12:17:21,346 - root - INFO - Content block 1: type=tool_use
+2025-07-24 12:17:21,346 - root - INFO - Executing tool: mcp_list_objects with input: {'schema_name': 'public'}
+2025-07-24 12:17:21,346 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:17:22] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:17:23] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:17:23,760 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:17:23,760 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:17:23,985 - root - INFO - Tool mcp_list_objects executed, result: {'success': True, 'data': [{'schema': 'public', 'name': 'assignments', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'course_info', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'modules',...
+2025-07-24 12:17:23,985 - root - INFO - Processed 1 tool calls, continuing conversation
+2025-07-24 12:17:23,985 - root - INFO - Sending continuation message to Claude with 3 total messages
+2025-07-24 12:17:26,033 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:17:26,034 - root - INFO - Final response stop_reason: end_turn
+2025-07-24 12:17:26,034 - root - INFO - Final response content: TextBlock(citations=None, text="STEP 2: Now let's get details about the policies table\n\n", type='text')...
+2025-07-24 12:17:26,034 - root - INFO - Final response is text, returning...
+Starting MCP server...
+Starting MCP server...
+Command: /home/joshslysz/projects/phyl-chatbot/backend/phyl-chatbot/bin/postgres-mcp --access-mode restricted --transport stdio [DATABASE_URI]
+✅ MCP server started successfully
+✅ MCP server started successfully
+INFO:     127.0.0.1:45842 - "POST /ask HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3357]
+INFO:     Started server process [3418]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-07-24 12:17:58,360 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:17:58,371 - root - INFO - Processing Claude response with stop_reason: tool_use
+2025-07-24 12:17:58,372 - root - INFO - Response content blocks: 1
+2025-07-24 12:17:58,372 - root - INFO - Claude wants to use tools - processing tool calls
+2025-07-24 12:17:58,372 - root - INFO - Content block 0: type=tool_use
+2025-07-24 12:17:58,372 - root - INFO - Executing tool: mcp_list_objects with input: {'schema_name': 'public'}
+2025-07-24 12:17:58,372 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:17:59] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:18:00] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:18:00,688 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:18:00,688 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:18:00,931 - root - INFO - Tool mcp_list_objects executed, result: {'success': True, 'data': [{'schema': 'public', 'name': 'assignments', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'course_info', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'modules',...
+2025-07-24 12:18:00,931 - root - INFO - Processed 1 tool calls, continuing conversation
+2025-07-24 12:18:00,931 - root - INFO - Sending continuation message to Claude with 3 total messages
+2025-07-24 12:18:01,816 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:18:01,817 - root - INFO - Final response stop_reason: end_turn
+Starting MCP server...
+Starting MCP server...
+Command: /home/joshslysz/projects/phyl-chatbot/backend/phyl-chatbot/bin/postgres-mcp --access-mode restricted --transport stdio [DATABASE_URI]
+✅ MCP server started successfully
+✅ MCP server started successfully
+INFO:     127.0.0.1:34656 - "POST /ask HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3418]
+INFO:     Started server process [3479]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-07-24 12:18:28,308 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:18:28,314 - root - INFO - Processing Claude response with stop_reason: tool_use
+2025-07-24 12:18:28,314 - root - INFO - Response content blocks: 1
+2025-07-24 12:18:28,314 - root - INFO - Claude wants to use tools - processing tool calls
+2025-07-24 12:18:28,314 - root - INFO - Content block 0: type=tool_use
+2025-07-24 12:18:28,314 - root - INFO - Executing tool: mcp_list_objects with input: {'schema_name': 'public'}
+2025-07-24 12:18:28,314 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:18:29] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:18:30] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:18:30,671 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:18:30,671 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:18:30,900 - root - INFO - Tool mcp_list_objects executed, result: {'success': True, 'data': [{'schema': 'public', 'name': 'assignments', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'course_info', 'type': 'BASE TABLE'}, {'schema': 'public', 'name': 'modules',...
+2025-07-24 12:18:30,900 - root - INFO - Processed 1 tool calls, continuing conversation
+2025-07-24 12:18:30,900 - root - INFO - Sending continuation message to Claude with 3 total messages
+2025-07-24 12:18:32,630 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:18:32,633 - root - INFO - Final response stop_reason: end_turn
+2025-07-24 12:18:32,633 - root - INFO - Final response content blocks: 0
+2025-07-24 12:18:32,634 - root - ERROR - Final response has no content blocks!
+Starting MCP server...
+Starting MCP server...
+Command: /home/joshslysz/projects/phyl-chatbot/backend/phyl-chatbot/bin/postgres-mcp --access-mode restricted --transport stdio [DATABASE_URI]
+✅ MCP server started successfully
+✅ MCP server started successfully
+INFO:     127.0.0.1:60610 - "POST /ask HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3479]
+INFO:     Started server process [3540]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-07-24 12:19:02,376 - root - INFO - Processing question: what is the email policy
+2025-07-24 12:19:02,376 - root - INFO - Starting fresh-connection optimized workflow
+2025-07-24 12:19:02,376 - root - INFO - Step 1: Discovering tables
+2025-07-24 12:19:02,376 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:19:03] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:19:04] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:19:04,921 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:19:04,922 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:19:05,132 - root - INFO - Discovered tables: ['assignments', 'course_info', 'modules', 'policies']
+2025-07-24 12:19:05,132 - root - INFO - Generated smart SQL: SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%' OR specific_rules ILIKE '%email%' ORDER BY policy_category, policy_name;
+2025-07-24 12:19:05,132 - root - INFO - Executing MCP tool: execute_sql with input: {"use_tool": "execute_sql", "sql_query": "SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%' OR specific_rules ILIKE '%email%' ORDER BY policy_category, policy_name;", "schema_name": "public"}
+[07/24/25 12:19:06] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:19:07] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+2025-07-24 12:19:07,265 - root - INFO - Generated SQL: SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%' OR specific_rules ILIKE '%email%' ORDER BY policy_category, policy_name;
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:19:07,526 - root - INFO - MCP tool execute_sql: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:19:07,526 - root - INFO - SQL returned 2 rows - Claude will receive structured data
+2025-07-24 12:19:07,526 - root - INFO - Sample result: {"policy_category": "Absences", "policy_name": "Student Declaration of Absence (SDA)", "policy_description": "Medical note replacement for acute illness", "details": "SDAs replace medical notes for il
+2025-07-24 12:19:07,526 - root - INFO - MCP tool execute_sql - PARSING SUCCESS - Claude receives: [{"policy_category": "Absences", "policy_name": "Student Declaration of Absence (SDA)", "policy_description": "Medical note replacement for acute illness", "details": "SDAs replace medical notes for illness affecting academic work", "specific_rules": "Must be submitted via email to phyl10xx@dal.ca (not Brightspace). Only ONE SDA allowed per course."}, {"policy_category": "Communication", "policy_name": "Email Policy", "policy_description": "Professional email communication expectations", "detail
+2025-07-24 12:19:11,396 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:19:11,402 - root - INFO - Fresh-connection workflow completed successfully
+Starting MCP server...
+Starting MCP server...
+Command: /home/joshslysz/projects/phyl-chatbot/backend/phyl-chatbot/bin/postgres-mcp --access-mode restricted --transport stdio [DATABASE_URI]
+✅ MCP server started successfully
+✅ MCP server started successfully
+INFO:     127.0.0.1:60990 - "POST /ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44994 - "OPTIONS /ask HTTP/1.1" 200 OK
+2025-07-24 12:23:14,879 - root - INFO - Processing question: test connection
+2025-07-24 12:23:14,879 - root - INFO - Starting fresh-connection optimized workflow
+2025-07-24 12:23:14,879 - root - INFO - Step 1: Discovering tables
+2025-07-24 12:23:14,879 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:23:16] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:23:17] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:23:17,580 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:23:17,580 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:23:17,782 - root - INFO - Discovered tables: ['assignments', 'course_info', 'modules', 'policies']
+2025-07-24 12:23:17,782 - root - INFO - Generated smart SQL: SELECT * FROM assignments ORDER BY due_date, week;
+2025-07-24 12:23:17,782 - root - INFO - Executing MCP tool: execute_sql with input: {"use_tool": "execute_sql", "sql_query": "SELECT * FROM assignments ORDER BY due_date, week;", "schema_name": "public"}
+[07/24/25 12:23:19] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+2025-07-24 12:23:19,876 - root - INFO - Generated SQL: SELECT * FROM assignments ORDER BY due_date, week;
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+[07/24/25 12:23:20] INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:23:20,139 - root - WARNING - MCP tool execute_sql: All parsing methods failed, returning raw text. Content: [{'assignment_name': 'Bonus case study XA1', 'assignment_type': 'case_study', 'due_date': datetime.date(2025, 9, 12), 'week': 3, 'block': 'XA', 'description': 'homeostasis', 'points_possible': 4, 'wei...
+2025-07-24 12:23:20,139 - root - ERROR - SQL parsing failed - Claude will receive raw text: [{'assignment_name': 'Bonus case study XA1', 'assignment_type': 'case_study', 'due_date': datetime.date(2025, 9, 12), 'week': 3, 'block': 'XA', 'description': 'homeostasis', 'points_possible': 4, 'wei
+2025-07-24 12:23:20,139 - root - WARNING - MCP tool execute_sql - PARSING FAILED - Claude receives: {"raw_text": "[{'assignment_name': 'Bonus case study XA1', 'assignment_type': 'case_study', 'due_date': datetime.date(2025, 9, 12), 'week': 3, 'block': 'XA', 'description': 'homeostasis', 'points_possible': 4, 'weight_percent': Decimal('0.22'), 'location': 'online', 'time_due': None, 'notes': 'Optional bonus points'}, {'assignment_name': 'Quiz 1', 'assignment_type': 'quiz', 'due_date': datetime.date(2025, 9, 14), 'week': 3, 'block': 'XA', 'description': 'homeostasis & cell membrane', 'points_pos
+2025-07-24 12:23:22,860 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:23:22,861 - root - INFO - Fresh-connection workflow completed successfully
+INFO:     127.0.0.1:44994 - "POST /ask HTTP/1.1" 200 OK
+2025-07-24 12:23:22,864 - root - INFO - Processing question: what is the email policy?
+2025-07-24 12:23:22,864 - root - INFO - Starting fresh-connection optimized workflow
+2025-07-24 12:23:22,864 - root - INFO - Step 1: Discovering tables
+2025-07-24 12:23:22,864 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:23:24] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:23:25] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:23:25,376 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:23:25,376 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:23:25,608 - root - INFO - Discovered tables: ['assignments', 'course_info', 'modules', 'policies']
+2025-07-24 12:23:25,608 - root - INFO - Generated smart SQL: SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%' OR specific_rules ILIKE '%email%' ORDER BY policy_category, policy_name;
+2025-07-24 12:23:25,608 - root - INFO - Executing MCP tool: execute_sql with input: {"use_tool": "execute_sql", "sql_query": "SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%' OR specific_rules ILIKE '%email%' ORDER BY policy_category, policy_name;", "schema_name": "public"}
+[07/24/25 12:23:27] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+2025-07-24 12:23:27,785 - root - INFO - Generated SQL: SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%' OR specific_rules ILIKE '%email%' ORDER BY policy_category, policy_name;
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+[07/24/25 12:23:28] INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:23:28,049 - root - INFO - MCP tool execute_sql: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:23:28,049 - root - INFO - SQL returned 2 rows - Claude will receive structured data
+2025-07-24 12:23:28,049 - root - INFO - Sample result: {"policy_category": "Absences", "policy_name": "Student Declaration of Absence (SDA)", "policy_description": "Medical note replacement for acute illness", "details": "SDAs replace medical notes for il
+2025-07-24 12:23:28,049 - root - INFO - MCP tool execute_sql - PARSING SUCCESS - Claude receives: [{"policy_category": "Absences", "policy_name": "Student Declaration of Absence (SDA)", "policy_description": "Medical note replacement for acute illness", "details": "SDAs replace medical notes for illness affecting academic work", "specific_rules": "Must be submitted via email to phyl10xx@dal.ca (not Brightspace). Only ONE SDA allowed per course."}, {"policy_category": "Communication", "policy_name": "Email Policy", "policy_description": "Professional email communication expectations", "detail
+2025-07-24 12:23:31,685 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:23:31,686 - root - INFO - Fresh-connection workflow completed successfully
+INFO:     127.0.0.1:45008 - "POST /ask HTTP/1.1" 200 OK
+2025-07-24 12:23:41,520 - root - INFO - Processing question: who are the instructors?
+2025-07-24 12:23:41,520 - root - INFO - Starting fresh-connection optimized workflow
+2025-07-24 12:23:41,521 - root - INFO - Step 1: Discovering tables
+2025-07-24 12:23:41,521 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:23:43] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:23:44,035 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:23:44,035 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:23:44,347 - root - INFO - Discovered tables: ['assignments', 'course_info', 'modules', 'policies']
+2025-07-24 12:23:44,347 - root - INFO - Generated smart SQL: SELECT * FROM course_info ORDER BY info_category, info_type;
+2025-07-24 12:23:44,347 - root - INFO - Executing MCP tool: execute_sql with input: {"use_tool": "execute_sql", "sql_query": "SELECT * FROM course_info ORDER BY info_category, info_type;", "schema_name": "public"}
+[07/24/25 12:23:46] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+2025-07-24 12:23:46,512 - root - INFO - Generated SQL: SELECT * FROM course_info ORDER BY info_category, info_type;
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:23:46,784 - root - INFO - MCP tool execute_sql: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:23:46,784 - root - INFO - SQL returned 31 rows - Claude will receive structured data
+2025-07-24 12:23:46,784 - root - INFO - Sample result: {"info_category": "Class Schedule", "info_type": "Monday Classes", "title": "Active Learning Session", "details": "Mondays 2:35-3:25PM", "contact_info": "McCain Arts & SS AUD-2", "additional_notes": "
+2025-07-24 12:23:46,784 - root - INFO - MCP tool execute_sql - PARSING SUCCESS - Claude receives: [{"info_category": "Class Schedule", "info_type": "Monday Classes", "title": "Active Learning Session", "details": "Mondays 2:35-3:25PM", "contact_info": "McCain Arts & SS AUD-2", "additional_notes": "Face-to-face instructor-led active learning with TopHat questions", "Column1": "", "_1": "", "_2": "", "_3": ""}, {"info_category": "Class Schedule", "info_type": "Online Content", "title": "Asynchronous Online Activity", "details": "Class material available online", "contact_info": "", "additional
+2025-07-24 12:23:51,160 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:23:51,163 - root - INFO - Fresh-connection workflow completed successfully
+INFO:     127.0.0.1:47666 - "POST /ask HTTP/1.1" 200 OK
+2025-07-24 12:24:00,330 - root - INFO - Processing question: when are office hours?
+2025-07-24 12:24:00,330 - root - INFO - Starting fresh-connection optimized workflow
+2025-07-24 12:24:00,330 - root - INFO - Step 1: Discovering tables
+2025-07-24 12:24:00,330 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:24:02] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:24:02,802 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:24:02,803 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:24:03,040 - root - INFO - Discovered tables: ['assignments', 'course_info', 'modules', 'policies']
+2025-07-24 12:24:03,040 - root - INFO - Generated smart SQL: SELECT * FROM course_info ORDER BY info_category, info_type;
+2025-07-24 12:24:03,040 - root - INFO - Executing MCP tool: execute_sql with input: {"use_tool": "execute_sql", "sql_query": "SELECT * FROM course_info ORDER BY info_category, info_type;", "schema_name": "public"}
+[07/24/25 12:24:04] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:24:05] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+2025-07-24 12:24:05,163 - root - INFO - Generated SQL: SELECT * FROM course_info ORDER BY info_category, info_type;
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:24:05,447 - root - INFO - MCP tool execute_sql: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:24:05,447 - root - INFO - SQL returned 31 rows - Claude will receive structured data
+2025-07-24 12:24:05,447 - root - INFO - Sample result: {"info_category": "Class Schedule", "info_type": "Monday Classes", "title": "Active Learning Session", "details": "Mondays 2:35-3:25PM", "contact_info": "McCain Arts & SS AUD-2", "additional_notes": "
+2025-07-24 12:24:05,447 - root - INFO - MCP tool execute_sql - PARSING SUCCESS - Claude receives: [{"info_category": "Class Schedule", "info_type": "Monday Classes", "title": "Active Learning Session", "details": "Mondays 2:35-3:25PM", "contact_info": "McCain Arts & SS AUD-2", "additional_notes": "Face-to-face instructor-led active learning with TopHat questions", "Column1": "", "_1": "", "_2": "", "_3": ""}, {"info_category": "Class Schedule", "info_type": "Online Content", "title": "Asynchronous Online Activity", "details": "Class material available online", "contact_info": "", "additional
+2025-07-24 12:24:08,796 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:24:08,799 - root - INFO - Fresh-connection workflow completed successfully
+INFO:     127.0.0.1:38510 - "POST /ask HTTP/1.1" 200 OK
+2025-07-24 12:24:22,781 - root - INFO - Processing question: what are we learnign first?
+2025-07-24 12:24:22,781 - root - INFO - Starting fresh-connection optimized workflow
+2025-07-24 12:24:22,781 - root - INFO - Step 1: Discovering tables
+2025-07-24 12:24:22,782 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:24:24] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:24:25] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:24:25,368 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:24:25,368 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:24:25,605 - root - INFO - Discovered tables: ['assignments', 'course_info', 'modules', 'policies']
+2025-07-24 12:24:25,605 - root - INFO - Generated smart SQL: SELECT 'assignment' as source, assignment_name as name, description as content FROM assignments WHERE assignment_name ILIKE '%what%' OR description ILIKE '%what%' UNION ALL SELECT 'course_info' as source, title as name, details as content FROM course_info WHERE title ILIKE '%what%' OR details ILIKE '%what%' OR contact_info ILIKE '%what%' OR additional_notes ILIKE '%what%' UNION ALL SELECT 'module' as source, module_name as name, module_description as content FROM modules WHERE module_name ILIKE '%what%' OR module_description ILIKE '%what%' UNION ALL SELECT 'policy' as source, policy_name as name, policy_description as content FROM policies WHERE policy_name ILIKE '%what%' OR policy_description ILIKE '%what%';
+2025-07-24 12:24:25,605 - root - INFO - Executing MCP tool: execute_sql with input: {"use_tool": "execute_sql", "sql_query": "SELECT 'assignment' as source, assignment_name as name, description as content FROM assignments WHERE assignment_name ILIKE '%what%' OR description ILIKE '%what%' UNION ALL SELECT 'course_info' as source, title as name, details as content FROM course_info WHERE title ILIKE '%what%' OR details ILIKE '%what%' OR contact_info ILIKE '%what%' OR additional_notes ILIKE '%what%' UNION ALL SELECT 'module' as source, module_name as name, module_description as content FROM modules WHERE module_name ILIKE '%what%' OR module_description ILIKE '%what%' UNION ALL SELECT 'policy' as source, policy_name as name, policy_description as content FROM policies WHERE policy_name ILIKE '%what%' OR policy_description ILIKE '%what%';", "schema_name": "public"}
+[07/24/25 12:24:27] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+2025-07-24 12:24:27,702 - root - INFO - Generated SQL: SELECT 'assignment' as source, assignment_name as name, description as content FROM assignments WHERE assignment_name ILIKE '%what%' OR description ILIKE '%what%' UNION ALL SELECT 'course_info' as source, title as name, details as content FROM course_info WHERE title ILIKE '%what%' OR details ILIKE '%what%' OR contact_info ILIKE '%what%' OR additional_notes ILIKE '%what%' UNION ALL SELECT 'module' as source, module_name as name, module_description as content FROM modules WHERE module_name ILIKE '%what%' OR module_description ILIKE '%what%' UNION ALL SELECT 'policy' as source, policy_name as name, policy_description as content FROM policies WHERE policy_name ILIKE '%what%' OR policy_description ILIKE '%what%';
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:24:27,961 - root - INFO - SQL returned 0 rows - Claude will receive structured data
+2025-07-24 12:24:27,961 - root - WARNING - SQL query returned no results - check if search terms match data
+2025-07-24 12:24:27,961 - root - INFO - MCP tool execute_sql - PARSING SUCCESS - Claude receives: []
+INFO:     127.0.0.1:55746 - "POST /ask HTTP/1.1" 200 OK
+2025-07-24 12:25:07,249 - root - INFO - Processing question: who do i email if I have a question?
+2025-07-24 12:25:07,249 - root - INFO - Starting fresh-connection optimized workflow
+2025-07-24 12:25:07,249 - root - INFO - Step 1: Discovering tables
+2025-07-24 12:25:07,249 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:25:08] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:25:09] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:25:09,690 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:25:09,690 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:25:09,958 - root - INFO - Discovered tables: ['assignments', 'course_info', 'modules', 'policies']
+2025-07-24 12:25:09,958 - root - INFO - Generated smart SQL: SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%' OR specific_rules ILIKE '%email%' ORDER BY policy_category, policy_name;
+2025-07-24 12:25:09,958 - root - INFO - Executing MCP tool: execute_sql with input: {"use_tool": "execute_sql", "sql_query": "SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%' OR specific_rules ILIKE '%email%' ORDER BY policy_category, policy_name;", "schema_name": "public"}
+[07/24/25 12:25:11] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+[07/24/25 12:25:12] INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+2025-07-24 12:25:12,044 - root - INFO - Generated SQL: SELECT policy_category, policy_name, policy_description, details, specific_rules FROM policies WHERE policy_name ILIKE '%email%' OR policy_description ILIKE '%email%' OR details ILIKE '%email%' OR specific_rules ILIKE '%email%' ORDER BY policy_category, policy_name;
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:25:12,365 - root - INFO - MCP tool execute_sql: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:25:12,365 - root - INFO - SQL returned 2 rows - Claude will receive structured data
+2025-07-24 12:25:12,365 - root - INFO - Sample result: {"policy_category": "Absences", "policy_name": "Student Declaration of Absence (SDA)", "policy_description": "Medical note replacement for acute illness", "details": "SDAs replace medical notes for il
+2025-07-24 12:25:12,365 - root - INFO - MCP tool execute_sql - PARSING SUCCESS - Claude receives: [{"policy_category": "Absences", "policy_name": "Student Declaration of Absence (SDA)", "policy_description": "Medical note replacement for acute illness", "details": "SDAs replace medical notes for illness affecting academic work", "specific_rules": "Must be submitted via email to phyl10xx@dal.ca (not Brightspace). Only ONE SDA allowed per course."}, {"policy_category": "Communication", "policy_name": "Email Policy", "policy_description": "Professional email communication expectations", "detail
+2025-07-24 12:25:15,448 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:25:15,459 - root - INFO - Fresh-connection workflow completed successfully
+INFO:     127.0.0.1:41198 - "POST /ask HTTP/1.1" 200 OK
+2025-07-24 12:25:34,762 - root - INFO - Processing question: where are the offices of the intructors?
+2025-07-24 12:25:34,762 - root - INFO - Starting fresh-connection optimized workflow
+2025-07-24 12:25:34,762 - root - INFO - Step 1: Discovering tables
+2025-07-24 12:25:34,762 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:25:36] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+[07/24/25 12:25:37] INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:25:37,252 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:25:37,252 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:25:37,550 - root - INFO - Discovered tables: ['assignments', 'course_info', 'modules', 'policies']
+2025-07-24 12:25:37,550 - root - INFO - Generated smart SQL: SELECT * FROM course_info ORDER BY info_category, info_type;
+2025-07-24 12:25:37,550 - root - INFO - Executing MCP tool: execute_sql with input: {"use_tool": "execute_sql", "sql_query": "SELECT * FROM course_info ORDER BY info_category, info_type;", "schema_name": "public"}
+[07/24/25 12:25:39] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+2025-07-24 12:25:39,646 - root - INFO - Generated SQL: SELECT * FROM course_info ORDER BY info_category, info_type;
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:25:39,895 - root - INFO - MCP tool execute_sql: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:25:39,895 - root - INFO - SQL returned 31 rows - Claude will receive structured data
+2025-07-24 12:25:39,895 - root - INFO - Sample result: {"info_category": "Class Schedule", "info_type": "Monday Classes", "title": "Active Learning Session", "details": "Mondays 2:35-3:25PM", "contact_info": "McCain Arts & SS AUD-2", "additional_notes": "
+2025-07-24 12:25:39,895 - root - INFO - MCP tool execute_sql - PARSING SUCCESS - Claude receives: [{"info_category": "Class Schedule", "info_type": "Monday Classes", "title": "Active Learning Session", "details": "Mondays 2:35-3:25PM", "contact_info": "McCain Arts & SS AUD-2", "additional_notes": "Face-to-face instructor-led active learning with TopHat questions", "Column1": "", "_1": "", "_2": "", "_3": ""}, {"info_category": "Class Schedule", "info_type": "Online Content", "title": "Asynchronous Online Activity", "details": "Class material available online", "contact_info": "", "additional
+2025-07-24 12:25:44,134 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:25:44,136 - root - INFO - Fresh-connection workflow completed successfully
+INFO:     127.0.0.1:44980 - "POST /ask HTTP/1.1" 200 OK
+2025-07-24 12:26:29,622 - root - INFO - Processing question: how do i sign up for a tutorial?
+2025-07-24 12:26:29,623 - root - INFO - Starting fresh-connection optimized workflow
+2025-07-24 12:26:29,623 - root - INFO - Step 1: Discovering tables
+2025-07-24 12:26:29,623 - root - INFO - Executing MCP tool: list_objects with input: {"use_tool": "list_objects", "schema_name": "public"}
+[07/24/25 12:26:31] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+[07/24/25 12:26:32] INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:26:32,189 - root - INFO - MCP tool list_objects: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:26:32,189 - root - INFO - MCP tool list_objects - PARSING SUCCESS - Claude receives: [{"schema": "public", "name": "assignments", "type": "BASE TABLE"}, {"schema": "public", "name": "course_info", "type": "BASE TABLE"}, {"schema": "public", "name": "modules", "type": "BASE TABLE"}, {"schema": "public", "name": "policies", "type": "BASE TABLE"}]
+2025-07-24 12:26:32,469 - root - INFO - Discovered tables: ['assignments', 'course_info', 'modules', 'policies']
+2025-07-24 12:26:32,469 - root - INFO - Generated smart SQL: SELECT * FROM course_info ORDER BY info_category, info_type;
+2025-07-24 12:26:32,469 - root - INFO - Executing MCP tool: execute_sql with input: {"use_tool": "execute_sql", "sql_query": "SELECT * FROM course_info ORDER BY info_category, info_type;", "schema_name": "public"}
+[07/24/25 12:26:34] INFO     Starting PostgreSQL MCP Server in     server.py:555
+                             RESTRICTED mode                                    
+                    INFO     Successfully connected to database    server.py:568
+                             and initialized connection pool                    
+2025-07-24 12:26:34,611 - root - INFO - Generated SQL: SELECT * FROM course_info ORDER BY info_category, info_type;
+                    INFO     Processing request of type            server.py:625
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:625
+                             ListToolsRequest                                   
+2025-07-24 12:26:34,879 - root - INFO - MCP tool execute_sql: Successfully parsed as Python literal (single quotes converted)
+2025-07-24 12:26:34,879 - root - INFO - SQL returned 31 rows - Claude will receive structured data
+2025-07-24 12:26:34,879 - root - INFO - Sample result: {"info_category": "Class Schedule", "info_type": "Monday Classes", "title": "Active Learning Session", "details": "Mondays 2:35-3:25PM", "contact_info": "McCain Arts & SS AUD-2", "additional_notes": "
+2025-07-24 12:26:34,879 - root - INFO - MCP tool execute_sql - PARSING SUCCESS - Claude receives: [{"info_category": "Class Schedule", "info_type": "Monday Classes", "title": "Active Learning Session", "details": "Mondays 2:35-3:25PM", "contact_info": "McCain Arts & SS AUD-2", "additional_notes": "Face-to-face instructor-led active learning with TopHat questions", "Column1": "", "_1": "", "_2": "", "_3": ""}, {"info_category": "Class Schedule", "info_type": "Online Content", "title": "Asynchronous Online Activity", "details": "Class material available online", "contact_info": "", "additional
+2025-07-24 12:26:39,372 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-24 12:26:39,374 - root - INFO - Fresh-connection workflow completed successfully
+INFO:     127.0.0.1:51724 - "POST /ask HTTP/1.1" 200 OK

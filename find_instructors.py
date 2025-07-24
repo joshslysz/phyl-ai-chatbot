@@ -32,7 +32,7 @@ async def find_instructors():
                 print("=== CHECKING ALL TABLES FOR INSTRUCTOR INFO ===")
                 
                 # Check each table for any instructor-related columns
-                tables = ['assignments', 'modules', 'policies']
+                tables = ['assignments', 'modules', 'policies', 'course_info']
                 
                 for table in tables:
                     print(f"\n--- {table.upper()} TABLE ---")
